@@ -1,27 +1,23 @@
 package com.company.controllers;
 
-import entities.Car;
-
+import com.company.entities.Car;
+import com.company.repositories.interfaces.ICarRepository;
 import java.util.List;
-
 public class CarController {
-    private final com.company.repositories.interfaces.ICarRepository repo;
-
-    public CarController(com.company.repositories.interfaces.ICarRepository repo)
+    private final ICarRepository repo;
+    public CarController(ICarRepository repo)
     {
         this.repo=repo;
     }
-    public  String createCar(String name){
-        Car car = new Car(name);
-        Car car1 = new Car(name);
-        boolean created= repo.createCar(Car);
+    public  String createCar(String model , String number , String colour){
+        Car car = new Car(model , number , colour);
+        boolean created= repo.createCar(car);
         return (created ? "Car was created!" : "Car creation was failed");
     }
     public String getCar(int id){
         Car car = repo.getCar(id);
-        return (Car == null ? "Car was not found" : Car.toString());
+        return (car == null ? "Car was not found" : car.toString());
     }
-
     public String getAllCars(){
         List<Car> Cars = repo.getAllCars();
         return Cars.toString();
