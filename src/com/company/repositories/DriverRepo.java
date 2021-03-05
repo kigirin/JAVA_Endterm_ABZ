@@ -3,12 +3,10 @@ package com.company.repositories;
 import com.company.data.interfaces.IDB;
 import com.company.entities.Driver;
 import com.company.repositories.interfaces.IDriverRepository;
-import java.sql.Connection;
-import java.sql.ResultSet;
+
+import java.sql.*;
 import java.util.List;
 import java.util.ArrayList;
-import java.sql.SQLException;
-import java.sql.PreparedStatement;
 
 public class DriverRepo implements IDriverRepository {
 private final IDB db;
@@ -46,19 +44,68 @@ f.printStackTrace();
 }
 return false;
 }
-public Driver getDriver(int id){
-Connection con = null;
-try{
-con = this.db.getConnection();
-String sql = "SELECT id,name,surname,PhoneNumber,CarID FROM Drivers WHERE id=?";
-PreparedStatement st =con.prepareStatement(sql);
-st.setInt(1,id);
-    ResultSet resultSet =st.executeQuery();
-if(!resultSet.next()){
-return null;
-}
-Driver driver = new Driver(resultSet.getInt("id") , resultSet.getString("name") , resultSet.getString("surname") , resultSet.getString("PhoneNumber") , resultSet.getString("CarID"));
+        @Override
+        public Driver getDriver(int id){
+        Connection con = null;
+        try{
+            con = db.getConnection();
+            String sql = "SELECT id,name,surname,PhoneNumber,CarID FROM Drivers WHERE id=?";
+            PreparedStatement st =con.prepareStatement(sql);
+            st.setInt(1,id);
+                ResultSet resultSet =st.executeQuery();
+            if(resultSet.next()){
+                Driver driver = new Driver(resultSet.getInt("id") ,
+                        resultSet.getString("name") ,
+                        resultSet.getString("surname") ,
+                        resultSet.getString("PhoneNumber") ,
+                        resultSet.getInt("CarID"));
+        
+            return null;
+            }
+        } catch(SQLException throwables){
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e){
+            e.printStackTrace();
+        } finally {
+            try{
+                con.close();
+            } catch (SQLException throwables){
+                throwables.printStackTrace();
+            }
+        }
+        return null;
+        }
+        
+        @Override
+        public List<Driver> getAllDrivers(){
+            Connection con = null;
+            try {
+                con = db.getConnection();
+                String sql = "SELECT id,name,surname,PhoneNumber,CarID FROM Drivers";
+                Statement st = con.createStatement();
 
-}
-}
+                ResultSet rs = st.executeQuery(sql);
+                List<Driver> drivers = new ArrayList<>();
+                while (rs.next()){
+                    Driver driver = new Driver(rs.getInt("id"),
+                            rs.getString("name"),
+                            rs.getString("surname"),
+                            rs.getString("PhoneNumber"),
+                            rs.getInt("CarID"));
+                    drivers.add(driver);
+                }
+                return drivers;
+            } catch (SQLException throwables){
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e){
+                e.printStackTrace();
+            } finally {
+                try{
+                    con.close();
+                } catch (SQLException throwables){
+                    throwables.printStackTrace();
+                }
+            }
+            return null;
+        }
 }

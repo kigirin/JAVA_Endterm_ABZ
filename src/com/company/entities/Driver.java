@@ -7,7 +7,7 @@ public class Driver {
     private String PhoneNumber;
     private int CarID;
 
-    public Driver() {}
+    public Driver(int id, String name, String surname, String phoneNumber, String carID) {}
 
     public void setId(int id) {
         this.id = id;
