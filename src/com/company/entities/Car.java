@@ -5,7 +5,7 @@ public class Car {
     private String model;
     private String number;
     private String colour;
-    public Car(int id, String model){
+    public Car(){
 
     }
 

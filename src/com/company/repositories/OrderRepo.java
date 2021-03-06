@@ -25,7 +25,7 @@ public class OrderRepo implements IOrderRepository {
         Connection con = null;
         try{
             con = db.getConnection();
-            String sql = "INSERT INTO Orders(id , cost , point_A , point_B , date , driverID) VALUES (?,?,?,?,?,?)";
+            String sql = "INSERT INTO orders(id , cost , point_A , point_B , date , driverID) VALUES (?,?,?,?,?,?)";
             PreparedStatement st = con.prepareStatement(sql);
 
             st.setInt(1,order.getId());
@@ -55,7 +55,7 @@ public class OrderRepo implements IOrderRepository {
         Connection con = null;
         try{
             con = db.getConnection();
-            String sql = "SELECT id , cost , point_A , point_B , date , driverID FROM Drivers WHERE id=?";
+            String sql = "SELECT id , cost , point_A , point_B , date , driverID FROM orders WHERE id=?";
             PreparedStatement st = con.prepareStatement(sql);
             st.setInt(1,id);
             ResultSet rs = st.executeQuery();
@@ -83,7 +83,7 @@ public class OrderRepo implements IOrderRepository {
         Connection con = null;
         try{
             con = db.getConnection();
-            String sql = "SELECT id , cost , point_A , point_B , date , driverID FROM Orders";
+            String sql = "SELECT id , cost , point_A , point_B , date , driverID FROM orders";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
             List<Order> orders = new ArrayList<>();

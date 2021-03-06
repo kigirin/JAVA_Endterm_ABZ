@@ -21,7 +21,7 @@ public class DriverController {
     public String createDriver(String name , String surname , String PhoneNumber , int CarID){
         Driver driver = new Driver(name , surname , PhoneNumber , CarID);
         boolean created = repository.createDriver(driver);
-        return (created ? "Driver was created!" : "Driver creation was failed");
+        return (created ? "Driver creation was failed" : "Driver was created!");
     }
     public String getDriver(int id){
         Driver driver = repository.getDriver(id);

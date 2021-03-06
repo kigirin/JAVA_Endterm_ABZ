@@ -12,7 +12,7 @@ public class CarController {
     public  String createCar(String model , String number , String colour){
         Car car = new Car(model , number , colour);
         boolean created= repo.createCar(car);
-        return (created ? "Car was created!" : "Car creation was failed");
+        return (created ? "Car creation was failed" : "Car was created");
     }
     public String getCar(int id){
         Car car = repo.getCar(id);

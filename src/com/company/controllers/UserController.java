@@ -18,7 +18,7 @@ public class UserController {
 
         boolean created = repo.createUser(user);
 
-        return (created ? "User was created!" : "User creation was failed!");
+        return (created ? "User creation was failed!" : "User was created!");
     }
 
     public String getUser(int id) {

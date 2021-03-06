@@ -22,7 +22,7 @@ public boolean createDriver(Driver driver){
 Connection con = null;
 try{
 con = this.db.getConnection();
-String sql = "INSERT INTO Drivers(id,name,surname,PhoneNumber,CarID) VALUES (?,?,?,?,?)";
+String sql = "INSERT INTO driver(id,name,surname,phonenumber,carid) VALUES (?,?,?,?,?)";
 PreparedStatement st = con.prepareStatement(sql);
 st.setInt(1,driver.getId());
 st.setString(2,driver.getName());
@@ -49,7 +49,7 @@ return false;
         Connection con = null;
         try{
             con = db.getConnection();
-            String sql = "SELECT id,name,surname,PhoneNumber,CarID FROM Drivers WHERE id=?";
+            String sql = "SELECT id,name,surname,PhoneNumber,CarID FROM driver WHERE id=?";
             PreparedStatement st =con.prepareStatement(sql);
             st.setInt(1,id);
                 ResultSet resultSet =st.executeQuery();
@@ -81,7 +81,7 @@ return false;
             Connection con = null;
             try {
                 con = db.getConnection();
-                String sql = "SELECT id,name,surname,PhoneNumber,CarID FROM Drivers";
+                String sql = "SELECT id,name,surname,PhoneNumber,CarID FROM driver";
                 Statement st = con.createStatement();
 
                 ResultSet rs = st.executeQuery(sql);
