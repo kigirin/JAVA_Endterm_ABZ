@@ -5,5 +5,5 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public interface IDB {
-    Connection getConnection() throws SQLException, ClassNotFoundException;
+    Connection getConnection() throws SQLException, ClassNotFoundException; //connection to our database
 }
