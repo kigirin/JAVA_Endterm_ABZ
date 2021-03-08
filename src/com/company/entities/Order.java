@@ -6,20 +6,20 @@ public class Order {
     private String point_A;
     private String point_B;
     private String date;
-    private int driverID;
+    private int driverID;//variable
 
     public Order(){
 
     }
 
-    public Order(double cost , String point_A , String point_B , String date , int driverID){
+    public Order(double cost , String point_A , String point_B , String date , int driverID){//constructor
         setCost(cost);
         setPoint_A(point_A);
         setPoint_B(point_B);
         setDate(date);
         setDriverID(driverID);
     }
-    public Order( int id , double cost , String point_A , String point_B , String date , int driverID){
+    public Order( int id , double cost , String point_A , String point_B , String date , int driverID){ //constructor
         setId(id);
         setCost(cost);
         setPoint_A(point_A);
@@ -30,7 +30,7 @@ public class Order {
 
     public int getId() {
         return id;
-    }
+    } // getr and setr
 
     public String getDate() {
         return date;
@@ -77,7 +77,7 @@ public class Order {
     }
 
     @Override
-    public String toString(){
+    public String toString(){ //method that returns variables
         return "Order id: " + getId() + ", cost" + getCost() + ", from address" + getPoint_A() + ",to address " + getPoint_B() + ", Date of ORder" + getDate() + ", Order taken driver id:" + getDriverID();
     }
 }

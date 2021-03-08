@@ -1,7 +1,7 @@
 package com.company.entities;
 
 public class Driver {
-    private int id;
+    private int id; //variables
     private String name;
     private String surname;
     private String PhoneNumber;
@@ -11,7 +11,7 @@ public class Driver {
 
     public void setId(int id) {
         this.id = id;
-    }
+    }//setr and getr
 
     public void setName(String name) {
         this.name = name;
@@ -49,14 +49,14 @@ public class Driver {
         return PhoneNumber;
     }
 
-    public Driver(String name, String surname, String PhoneNumber, int CarID) {
+    public Driver(String name, String surname, String PhoneNumber, int CarID) { //constructor
         setName(name);
         setSurname(surname);
         setCarID(CarID);
         setPhoneNumber(PhoneNumber);
     }
 
-    public Driver (int id, String name, String surname,String PhoneNumber, int CarID){
+    public Driver (int id, String name, String surname,String PhoneNumber, int CarID){//constructor
         setName(name);
         setSurname(surname);
         setId(id);
@@ -65,7 +65,7 @@ public class Driver {
 
     }
     @Override
-    public String toString() {
+    public String toString() { //method that returns variables
         return "Driver id: " + getId() + "; name: " + getName() + "; surname: " + getSurname() + "; PhoneNumber: " + getPhoneNumber() + "; CarID: " + getCarID();
     }
 

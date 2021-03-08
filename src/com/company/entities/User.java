@@ -4,19 +4,19 @@ public class User {
     private int id;
     private String name;
     private String surname;
-    private boolean gender;
+    private boolean gender;//variables
 
     public User() {
 
     }
 
-    public User(String name, String surname, boolean gender) {
+    public User(String name, String surname, boolean gender) { //constructor
         setName(name);
         setSurname(surname);
         setGender(gender);
     }
 
-    public User(int id, String name, String surname, boolean gender) {
+    public User(int id, String name, String surname, boolean gender) { //constructor
         setId(id);
         setName(name);
         setSurname(surname);
@@ -25,7 +25,7 @@ public class User {
 
     public int getId() {
         return id;
-    }
+    } //getr and setr
 
     public void setId(int id) {
         this.id = id;
@@ -56,7 +56,7 @@ public class User {
     }
 
     @Override
-    public String toString() {
+    public String toString() { //method that returns all variables
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
