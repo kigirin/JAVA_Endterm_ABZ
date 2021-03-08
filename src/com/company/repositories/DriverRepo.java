@@ -1,13 +1,17 @@
 package com.company.repositories;
-
+//package name com.company
 import com.company.data.interfaces.IDB;
+//import IDB class
 import com.company.entities.Driver;
+//import Driver class
 import com.company.repositories.interfaces.IDriverRepository;
-
+//import IDriverRepository
 import java.sql.*;
+//import java.sql
 import java.util.List;
+//import ArrayList
 import java.util.ArrayList;
-
+//import util.List
 public class DriverRepo implements IDriverRepository {
 private final IDB db;
 public DriverRepo(IDB db){
@@ -18,10 +22,15 @@ public DriverRepo(IDB db){
     private String surname;
     private String PhoneNumber;
     private int CarID;*/
+@Override
 public boolean createDriver(Driver driver){
+    //Connection SQL
 Connection con = null;
+//try/catch exception of insert to our DB
 try{
+    //Connection SQL
 con = this.db.getConnection();
+//Insert our values
 String sql = "INSERT INTO driver(id,name,surname,phonenumber,carid) VALUES (?,?,?,?,?)";
 PreparedStatement st = con.prepareStatement(sql);
 st.setInt(1,driver.getId());
@@ -44,11 +53,15 @@ f.printStackTrace();
 }
 return false;
 }
+    //@Override tells the compiler
         @Override
         public Driver getDriver(int id){
+            //Connection to SQL
         Connection con = null;
         try{
+            //db get connection
             con = db.getConnection();
+            //SELECT id which contain
             String sql = "SELECT id,name,surname,PhoneNumber,CarID FROM driver WHERE id=?";
             PreparedStatement st =con.prepareStatement(sql);
             st.setInt(1,id);
@@ -60,7 +73,7 @@ return false;
                         resultSet.getString("PhoneNumber") ,
                         resultSet.getInt("CarID"));
         
-            return null;
+            return driver;
             }
         } catch(SQLException throwables){
             throwables.printStackTrace();

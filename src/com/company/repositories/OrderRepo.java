@@ -4,7 +4,6 @@ import com.company.data.interfaces.IDB;
 import com.company.entities.Order;
 import com.company.repositories.interfaces.IOrderRepository;
 
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,12 +13,6 @@ public class OrderRepo implements IOrderRepository {
     public OrderRepo(IDB db){
         this.db = db;
     }
-/*    private int id;
-    private double cost ;
-    private String point_A;
-    private String point_B;
-    private String date;
-    private int driverID;*/
     @Override
     public boolean createOrder(Order order){
         Connection con = null;
