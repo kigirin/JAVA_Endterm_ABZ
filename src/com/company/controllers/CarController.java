@@ -8,17 +8,17 @@ public class CarController {
     public CarController(ICarRepository repo)
     {
         this.repo=repo;
-    }
-    public  String createCar(String model , String number , String colour){
+    } //constructor
+    public  String createCar(String model , String number , String colour){ //method that notifies us if object was created or not
         Car car = new Car(model , number , colour);
         boolean created= repo.createCar(car);
         return (created ? "Car creation was failed" : "Car was created");
     }
-    public String getCar(int id){
+    public String getCar(int id){//method that notifies if there is car in database
         Car car = repo.getCar(id);
         return (car == null ? "Car was not found" : car.toString());
     }
-    public String getAllCars(){
+    public String getAllCars(){ //method that returns all cars
         List<Car> Cars = repo.getAllCars();
         return Cars.toString();
     }

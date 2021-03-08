@@ -10,9 +10,9 @@ public class UserController {
 
     public UserController(IUserRepository repo) {
         this.repo = repo;
-    }
+    } // constructor
 
-    public String createUser(String name, String surname, String gender) {
+    public String createUser(String name, String surname, String gender) {// method that notifies if user was created
         boolean male = (gender.toLowerCase().equals("male"));
         User user = new User(name, surname, male);
 
@@ -21,13 +21,13 @@ public class UserController {
         return (created ? "User creation was failed!" : "User was created!");
     }
 
-    public String getUser(int id) {
+    public String getUser(int id) {  // method that returns and notifies if User was created
         User user = repo.getUser(id);
 
         return (user == null ? "User was not found!" : user.toString());
     }
 
-    public String getAllUsers() {
+    public String getAllUsers() { //method that lists all users
         List<User> users = repo.getAllUsers();
 
         return users.toString();
