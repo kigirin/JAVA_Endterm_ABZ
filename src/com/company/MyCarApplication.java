@@ -6,13 +6,13 @@ import com.company.repositories.interfaces.ICarRepository;
 import com.company.repositories.interfaces.IDriverRepository;
 import java.util.Scanner;
 public class MyCarApplication {
-    private final CarController controller;
+    private final CarController controller;// variables
     private final Scanner scanner;
-    public MyCarApplication(IDriverRepository driverRepository ,  ICarRepository carRepository) {
+    public MyCarApplication(IDriverRepository driverRepository ,  ICarRepository carRepository) { // constructor
         controller  = new CarController (carRepository);
         scanner = new Scanner(System.in);
     }
-    public void start() {
+    public void start() { //intro
         while (true) {
             System.out.println();
             System.out.println("Welcome to My Car Application");
@@ -24,7 +24,7 @@ public class MyCarApplication {
             System.out.println();
             try {
                 System.out.print("Enter option (1-3): ");
-                int option = scanner.nextInt();
+                int option = scanner.nextInt(); // persons choice
                 if (option == 1) {
                     getAllCarsMenu();
                 } else if (option == 2) {
@@ -41,7 +41,7 @@ public class MyCarApplication {
             System.out.println("*************************");
         }
     }
-    public void getAllCarsMenu() {
+    public void getAllCarsMenu() { //parsing to controller
         String response = controller.getAllCars();
         System.out.println(response);
     }
