@@ -8,9 +8,9 @@ import com.company.repositories.interfaces.IDriverRepository;
 import java.util.Scanner;
 
 public class MyOrderApplication {
-    private final OrderController controller;
+    private final OrderController controller; // variables
     private final Scanner scanner;
-    public MyOrderApplication(IOrderRepository orderRepository){
+    public MyOrderApplication(IOrderRepository orderRepository){ // constructor
         controller = new OrderController(orderRepository);
         scanner = new Scanner(System.in);
     }
